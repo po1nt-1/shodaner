@@ -249,6 +249,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addItem(self.horizontalSpacer)
 
         self.tableWidget_user = QTableWidget(self.centralwidget)
+        if (self.tableWidget_user.columnCount() < 3):
+            self.tableWidget_user.setColumnCount(3)
         self.tableWidget_user.setObjectName(u"tableWidget_user")
         sizePolicy.setHeightForWidth(self.tableWidget_user.sizePolicy().hasHeightForWidth())
         self.tableWidget_user.setSizePolicy(sizePolicy)
@@ -312,17 +314,17 @@ class Ui_MainWindow(object):
         self.tableWidget_user.setShowGrid(True)
         self.tableWidget_user.setGridStyle(Qt.DashLine)
         self.tableWidget_user.setRowCount(0)
-        self.tableWidget_user.setColumnCount(0)
-        self.tableWidget_user.horizontalHeader().setVisible(True)
+        self.tableWidget_user.setColumnCount(3)
+        self.tableWidget_user.horizontalHeader().setVisible(False)
         self.tableWidget_user.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget_user.horizontalHeader().setMinimumSectionSize(93)
         self.tableWidget_user.horizontalHeader().setDefaultSectionSize(93)
-        self.tableWidget_user.horizontalHeader().setHighlightSections(False)
+        self.tableWidget_user.horizontalHeader().setHighlightSections(True)
         self.tableWidget_user.horizontalHeader().setProperty("showSortIndicator", False)
         self.tableWidget_user.verticalHeader().setVisible(False)
         self.tableWidget_user.verticalHeader().setMinimumSectionSize(40)
         self.tableWidget_user.verticalHeader().setDefaultSectionSize(40)
-        self.tableWidget_user.verticalHeader().setHighlightSections(False)
+        self.tableWidget_user.verticalHeader().setHighlightSections(True)
         self.tableWidget_user.verticalHeader().setProperty("showSortIndicator", False)
 
         self.horizontalLayout_3.addWidget(self.tableWidget_user)
@@ -335,6 +337,8 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
         self.tableWidget_main = QTableWidget(self.centralwidget)
+        if (self.tableWidget_main.columnCount() < 10):
+            self.tableWidget_main.setColumnCount(10)
         self.tableWidget_main.setObjectName(u"tableWidget_main")
         sizePolicy.setHeightForWidth(self.tableWidget_main.sizePolicy().hasHeightForWidth())
         self.tableWidget_main.setSizePolicy(sizePolicy)
@@ -387,7 +391,7 @@ class Ui_MainWindow(object):
         self.tableWidget_main.setGridStyle(Qt.DashLine)
         self.tableWidget_main.setSortingEnabled(False)
         self.tableWidget_main.setRowCount(0)
-        self.tableWidget_main.setColumnCount(0)
+        self.tableWidget_main.setColumnCount(10)
         self.tableWidget_main.horizontalHeader().setVisible(False)
         self.tableWidget_main.horizontalHeader().setMinimumSectionSize(90)
         self.tableWidget_main.horizontalHeader().setDefaultSectionSize(90)

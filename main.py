@@ -35,6 +35,7 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
             self.tableWidget_main.setHorizontalHeaderLabels(data[0].keys())
             self.tableWidget_main.horizontalHeader().setVisible(True)
             self.tableWidget_main.setRowCount(len(data))
+            self.tableWidget_main.setColumnCount(len(data[0].keys()))
 
             for i, result in enumerate(data):
                 for j, value in enumerate(result.values()):
@@ -49,10 +50,11 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
 
     def show_user_info(self, data):
         try:
-            self.tableWidget_main.clear()
-            self.tableWidget_main.setHorizontalHeaderLabels(data.keys())
-            self.tableWidget_main.horizontalHeader().setVisible(True)
-            self.tableWidget_main.setRowCount(1)
+            self.tableWidget_user.clear()
+            self.tableWidget_user.setHorizontalHeaderLabels(data.keys())
+            self.tableWidget_user.horizontalHeader().setVisible(True)
+            self.tableWidget_user.setRowCount(1)
+            self.tableWidget_user.setColumnCount(len(data.keys()))
 
             for i, value in enumerate(data.values()):
                 cell = QTableWidgetItem(value)
@@ -60,6 +62,7 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
 
                 self.tableWidget_user.horizontalHeaderItem(
                     i).setTextAlignment(QtCore.Qt.AlignHCenter)
+
             self.tableWidget_user.resizeColumnsToContents()
         except Local_error as e:
             self.notifier.about(self, " ", str(e))

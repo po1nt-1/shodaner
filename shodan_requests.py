@@ -73,7 +73,6 @@ def csv_reader(path):
 
 def shodan_info():
     global api
-
     r = api.info()
     result = {
         'plan': str(r.get('plan')),
