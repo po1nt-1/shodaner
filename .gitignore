@@ -1,4 +1,5 @@
-secrets
 __pycache__
-*.csv
+secrets
+results
 ui
+*.csv

@@ -6,10 +6,6 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
 
 
-class error(Exception):
-    pass
-
-
 def _get_script_dir(follow_symlinks=True) -> str:
     '''получить директорию со скриптом'''
 
