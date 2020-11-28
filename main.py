@@ -36,6 +36,10 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
         super(MyQtApp, self).__init__(parent)
         self.setupUi(self)
 
+        self.text_ip_list.setPlaceholderText(
+            'Enter one IP per line.\n\n'
+            'Example:\n172.217.22.14\n40.114.177.156\n5.255.255.60')
+
         self.worker = Worker()
         self.worker.finished.connect(self.show_tables)
 

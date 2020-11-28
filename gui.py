@@ -421,7 +421,7 @@ class Ui_MainWindow(object):
         self.text_ip_list.setWhatsThis("")
 #endif // QT_CONFIG(whatsthis)
         self.text_ip_list.setDocumentTitle("")
-        self.text_ip_list.setPlaceholderText(QCoreApplication.translate("MainWindow", u"List of IP addresses", None))
+        self.text_ip_list.setPlaceholderText("")
         self.button_send_request.setText(QCoreApplication.translate("MainWindow", u"Send request", None))
         self.button_save_last.setText(QCoreApplication.translate("MainWindow", u"Save last result to csv", None))
         self.button_save_last_10.setText(QCoreApplication.translate("MainWindow", u"Save last 10 results to csv", None))
