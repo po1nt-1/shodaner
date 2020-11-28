@@ -67,9 +67,9 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
                         j).setTextAlignment(QtCore.Qt.AlignHCenter)
             self.tableWidget_main.resizeColumnsToContents()
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
     def show_user_info(self, data):
         try:
@@ -87,9 +87,9 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
 
             self.tableWidget_user.resizeColumnsToContents()
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
     def worker_start(self):
         try:
@@ -99,9 +99,9 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
 
             self.worker.start()
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
     def show_tables(self):
         try:
@@ -115,10 +115,10 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
             self.show_table(g_last_result)
             self.show_user_info(g_info_results)
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
             g_error = [False, '']
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
             g_error = [False, '']
 
     def save_last(self):
@@ -128,18 +128,18 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
             shodan_requests.csv_writer(
                 g_last_result, shodan_requests.gen_new_csv_name())
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
     def save_last_10(self):
         try:
             shodan_requests.csv_writer(
                 g_last_10_result, shodan_requests.gen_new_csv_name())
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
     def upload_to_table(self):
         try:
@@ -157,9 +157,9 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
             self.show_table(results)
 
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
     def change_token(self):
         try:
@@ -167,13 +167,14 @@ class MyQtApp(gui.Ui_MainWindow, QMainWindow):
 
             if bool(re.match("^[A-Za-z0-9]{32}$", token)):
                 shodan_requests.start(token)
+                self.notifier.about(self, "OK", "API key saved successfully")
             else:
                 raise Local_error('Invalid API key')
 
         except Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
         except shodan_requests.Local_error as e:
-            self.notifier.about(self, " ", str(e))
+            self.notifier.about(self, "ERROR", str(e))
 
 
 def send_request():

@@ -223,8 +223,8 @@ class Ui_MainWindow(object):
         self.button_change_token.setObjectName(u"button_change_token")
         sizePolicy.setHeightForWidth(self.button_change_token.sizePolicy().hasHeightForWidth())
         self.button_change_token.setSizePolicy(sizePolicy)
-        self.button_change_token.setMinimumSize(QSize(150, 40))
-        self.button_change_token.setMaximumSize(QSize(150, 40))
+        self.button_change_token.setMinimumSize(QSize(160, 40))
+        self.button_change_token.setMaximumSize(QSize(160, 40))
         self.button_change_token.setFont(font1)
         self.button_change_token.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(27, 29, 35);\n"
@@ -428,6 +428,6 @@ class Ui_MainWindow(object):
         self.button_upload_to_table.setText(QCoreApplication.translate("MainWindow", u"Upload from csv", None))
         self.lineEdit_token.setText("")
         self.lineEdit_token.setPlaceholderText(QCoreApplication.translate("MainWindow", u"API Key", None))
-        self.button_change_token.setText(QCoreApplication.translate("MainWindow", u"Set new token", None))
+        self.button_change_token.setText(QCoreApplication.translate("MainWindow", u"Set new API Key", None))
     # retranslateUi
 
