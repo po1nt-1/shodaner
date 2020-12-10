@@ -25,7 +25,6 @@ class Local_error(Exception):
 class Worker(QThread):
     def __init__(self, parent=None):
         super(Worker, self).__init__(parent)
-        self.second_notifier = QMessageBox()
 
     def run(self):
         send_request()

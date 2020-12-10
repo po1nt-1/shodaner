@@ -39,16 +39,16 @@ def write_token(plain_text):
 
 
 def read_token():
-    private_path = os.path.join(_get_script_dir(), 'secrets', 'token')
-    token_path = os.path.join(_get_script_dir(), 'secrets', 'private')
+    token_path = os.path.join(_get_script_dir(), 'secrets', 'token')
+    private_path = os.path.join(_get_script_dir(), 'secrets', 'private')
     if not os.path.exists(private_path) or not os.path.exists(token_path):
         raise error('Secret files were not found.')
 
     with open(private_path, 'rb') as f:
-        cipher_text = f.read()
+        private_key = RSA.import_key(f.read())
 
     with open(token_path, 'rb') as f:
-        private_key = RSA.import_key(f.read())
+        cipher_text = f.read()
 
     cipher = PKCS1_OAEP.new(private_key)
 

@@ -56,7 +56,10 @@ def csv_writer(data, path):
         os.mkdir(os.path.join(_get_script_dir(), 'results'))
 
     with open(path, 'w', encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=data[0].keys())
+        try:
+            writer = csv.DictWriter(f, fieldnames=data[0].keys())
+        except IndexError as e:
+            raise Local_error("The IP list is empty")
         writer.writeheader()
         for row in data:
             writer.writerow(row)
@@ -66,7 +69,6 @@ def csv_reader(path):
     if not os.path.exists(os.path.join(_get_script_dir(), 'results')):
         os.mkdir(os.path.join(_get_script_dir(), 'results'))
 
-    result = []
     with open(path, 'r', encoding='utf-8') as f:
         return list(csv.DictReader(f))
 
